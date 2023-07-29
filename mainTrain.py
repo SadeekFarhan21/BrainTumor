@@ -9,6 +9,7 @@ from keras.utils import normalize
 from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D
 from keras.layers import Activation, Dropout, Flatten, Dense
+from keras.utils import to_categorical
 
 dataset = []
 label = []
@@ -43,6 +44,9 @@ x_train, x_test, y_train, y_test = train_test_split(dataset, label, test_size = 
 x_train = normalize(x_train, axis = 1)
 x_test = normalize(x_test, axis = 1)
 
+y_train = to_categorical(y_train, num_classes = 2)
+y_test = to_categorical(y_test, num_classes = 2)
+
 # Model Building
 
 model = Sequential()
@@ -64,11 +68,10 @@ model.add(Flatten())
 model.add(Dense(64))
 model.add(Activation('relu'))
 model.add(Dropout(0.5))
-model.add(Dense(1))
+model.add(Dense(2))
 model.add(Activation('sigmoid'))
 
-model.compile(loss = 'binary_crossentropy', optimizer = 'adam', metrics = ['accuracy'])
+model.compile(loss = 'categorical_crossentropy', optimizer = 'adam', metrics = ['accuracy'])
 model.fit(x_train, y_train, batch_size = 64, verbose = 1, epochs=20, validation_data=(x_test, y_test), shuffle=True)
 
-model.save('BrainTumor10Epochs.h5')
-
+model.save('BrainTumor10EpochsCategorical.h5')
