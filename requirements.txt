@@ -2,5 +2,5 @@ streamlit
 scikit-learn
 tensorflow
 numpy
-cv2
+opencv-python
 os
