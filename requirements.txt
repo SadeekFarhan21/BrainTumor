@@ -1,0 +1,5 @@
+sklearn
+tensorflow
+PIL
+numpy
+cv2
