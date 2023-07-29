@@ -2,3 +2,4 @@ scikit-learn
 tensorflow
 numpy
 cv2
+streamlit
