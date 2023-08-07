@@ -7,7 +7,7 @@ INPUT_SIZE = 64
 
 model = load_model('BrainTumor10Epochs.h5')
 
-image = cv2.imread('/home/farhan/Documents/BrainTumor/pred/pred5.jpg')
+image = cv2.imread('/home/fyzur/Documents/BrainTumor/pred/pred5.jpg')
 image = Image.fromarray(image)
 image = image.resize((INPUT_SIZE, INPUT_SIZE))
 image = np.array(image)
