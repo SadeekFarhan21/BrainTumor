@@ -10,6 +10,8 @@ from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D
 from keras.layers import Activation, Dropout, Flatten, Dense
 from keras.utils import to_categorical
+import time
+
 
 dataset = []
 label = []
@@ -73,5 +75,8 @@ model.add(Activation('sigmoid'))
 
 model.compile(loss = 'categorical_crossentropy', optimizer = 'adam', metrics = ['accuracy'])
 model.fit(x_train, y_train, batch_size = 64, verbose = 1, epochs=20, validation_data=(x_test, y_test), shuffle=True)
+
+start_time = time.time()
+print("--- %s seconds ---" % (time.time() - start_time))
 
 model.save('BrainTumor10EpochsCategorical.h5')
